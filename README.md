@@ -12,6 +12,8 @@ When you instantiate the smart contract you **must** call the `initialize` metho
 markdown text for your smart legal contract. A sample of the payload to pass is included in
 `initialize-input.txt`.
 
+A source markdown contract is included as `contract.md`.
+
 # Trigger
 
 Once instantiated clauses within the smart contract can be triggered. You must pass the `ID` and the `JSON` payload to the `trigger` method.
