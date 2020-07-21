@@ -1,6 +1,8 @@
 # hlf-cicero-contract
 
-This project is a Smart Contract for **Hyperledger Fabric v2 (HLF v2)** (aka chaincode) that can be used to install, instantiate and trigger clauses within a smart legal agreement, defined using the Accord Project technology. The logic for the clause runs on-chain, and responses from the logic are returned to the caller. Any emitted events are passed to the Fabric event bus, and the state for the clause is stored on-chain.
+This project is a generic Smart Contract for **Hyperledger Fabric v2 (HLF v2)** (aka chaincode) that can be used to install, instantiate and trigger clauses within a smart legal agreement, defined using the [Accord Project](https://accordproject.org) technology. The logic for the clause runs on-chain, and responses from the logic are returned to the caller. Any emitted events are passed to the Fabric event bus, and the state for the clause is stored on-chain.
+
+The smart contract is initialized using an Accord Project *CiceroMark* document. CiceroMark is an extended markdown format, allowing inline instantiation of [Accord Project templates](https://docs.accordproject.org/docs/accordproject.html).
 
 # Install
 
@@ -68,7 +70,7 @@ The script includes the transaction payload (markdown text for the contract) fro
 A source markdown contract is included as `contract.md`.
 
 > Note that you can only call `initialize` once on the smart contract - ensuring that once the markdown text of the contract
-has been set, it is immutable.
+has been set, it is immutable. During the initialize transaction the CiceroMark text is parsed to extract the template references and templates are downloaded from https://templates.accordproject.org. This logic will have to be customized to load templates from elsewhere.
 
 # Trigger
 
