@@ -10,8 +10,7 @@ Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/ma
 
 Install the package onto Hyperledger Fabric v2 Test-Net peers using the `./install.sh` script.
 
-Here are the logs from a successful installation. Note the final message: `Initialized 1 clauses.` that indicates that
-1 template was detected in the markdown text used for initialization.
+Here are the logs from a successful installation.
 
 ```
 Dan-MacBook-Pro-2:hlf-cicero-contract dselman$ ./install.sh && ./initialize.sh 
@@ -57,7 +56,6 @@ checkcommitreadiness
 2020-07-21 15:56:42.629 CEST [chaincodeCmd] ClientWait -> INFO 001 txid [f2b0d3f1fbbafd043679b6a47298d0ace31b28fae0f80610d5bd9a162fd390b4] committed with status (VALID) at localhost:7051
 2020-07-21 15:56:42.633 CEST [chaincodeCmd] ClientWait -> INFO 002 txid [f2b0d3f1fbbafd043679b6a47298d0ace31b28fae0f80610d5bd9a162fd390b4] committed with status (VALID) at localhost:9051
 chaincode committed
-2020-07-21 15:56:47.076 CEST [chaincodeCmd] chaincodeInvokeOrQuery -> INFO 001 Chaincode invoke successful. result: status:200 payload:"Initialized 1 clauses." 
 ```
 
 # Initialize
@@ -68,6 +66,9 @@ After installing the chaincode on the peers you **must** call the `initialize` m
 The script includes the transaction payload (markdown text for the contract) from `initialize-input.txt`.
 
 A source markdown contract is included as `contract.md`.
+
+> Note that you can only call `initialize` once on the smart contract - ensuring that once the markdown text of the contract
+has been set, it is immutable.
 
 # Trigger
 
