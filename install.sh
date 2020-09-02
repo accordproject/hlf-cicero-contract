@@ -6,7 +6,7 @@
 # the script packages the chaincode and then installs it onto org1 and org2
 # it is based on: https://hyperledger-fabric.readthedocs.io/en/master/deploy_chaincode.html#install-the-chaincode-package
 
-# set these three values based on your HLF install location
+# set these two values based on your HLF install location
 export HLF_INSTALL_DIR=/Users/dselman/dev/fabric-samples
 export HLF_TEST_NETWORK=${HLF_INSTALL_DIR}/test-network
 # end set
