@@ -8,7 +8,7 @@ The smart contract is initialized using an Accord Project *CiceroMark* document.
 
 > Please customize the environment variables in the scripts based on your HLF v2 install location and the location of the HLF Test-Net.
 
-Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/master/install.html) for how to install the HLF v2 Test-Net and how to start it.
+Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html) for how to install the HLF v2 Test-Net and how to start it.
 
 Install the package onto Hyperledger Fabric v2 Test-Net peers using the `./install.sh` script.
 
