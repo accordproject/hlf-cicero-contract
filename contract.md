@@ -1,9 +1,9 @@
 Heading
 ====
 
-``` <clause src="ap://helloworldstate@0.13.0#bb863fb0a3ccd796eb3c6e9e244758201cc12673d53b74ec2f859d8abebc5e11" clauseid="CLAUSE_001"/>
-Name of the person to greet: "Dan Selman".
+{{#clause CLAUSE_001 src="ap://helloworldstate@0.14.0#6c506f481cf1b3debe347c72d97beacadb85ea8344b33e2e4950bdabb2580f11"}}
+Name of the person to greet: "Fred Blogs".
 Thank you!
-```
+{{/clause}}
 
 More text.

@@ -1,14 +1,34 @@
 # hlf-cicero-contract
 
-This project is a generic Smart Contract for **Hyperledger Fabric v2 (HLF v2)** (aka chaincode) that can be used to install, instantiate and trigger clauses within a smart legal agreement, defined using the [Accord Project](https://accordproject.org) technology. The logic for the clause runs on-chain, and responses from the logic are returned to the caller. Any emitted events are passed to the Fabric event bus, and the state for the clause is stored on-chain.
+This project is a generic Smart Contract for **Hyperledger Fabric v2.2 (HLF v2.2)** (aka chaincode) that can be used to install, instantiate and trigger clauses within a smart legal agreement, defined using the [Accord Project](https://accordproject.org) technology. The logic for the clause runs on-chain, and responses from the logic are returned to the caller. Any emitted events are passed to the Fabric event bus, and the state for the clause is stored on-chain.
 
 The smart contract is initialized using an Accord Project *CiceroMark* document. CiceroMark is an extended markdown format, allowing inline instantiation of [Accord Project templates](https://docs.accordproject.org/docs/accordproject.html).
 
 # Install
 
-> Please customize the environment variables in the scripts based on your HLF v2 install location and the location of the HLF Test-Net.
+> Please customize the environment variables in the scripts based on your HLF v2.2 install location and the location of the HLF Test-Net.
 
-Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/master/install.html) for how to install the HLF v2 Test-Net and how to start it.
+Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html) for how to install the HLF v2 Test-Net and how to start it and create a channel.
+
+Install [jq](https://stedolan.github.io/jq/) for your platform.
+
+Ensure your path is set correctly so that the `peer` command works. E.g.
+
+```
+export PATH=/Users/dselman/dev/fabric-samples/bin/:$PATH
+```
+
+Don't forget to create the channel!
+
+```
+./network.sh createChannel
+```
+
+## Start Network
+
+Start the network by running the `./network.sh up` inside the `fabric-samples/test-network` directory.
+
+## Install
 
 Install the package onto Hyperledger Fabric v2 Test-Net peers using the `./install.sh` script.
 
@@ -91,6 +111,6 @@ Dan-MacBook-Pro-2:hlf-cicero-contract dselman$ ./trigger.sh
 
 # Rebuild and Redeploy
 
-To modify the smart contract you must increment the version number in `package.json` and re-run the `./install.sh` script. Because you can only initialize the contract once you will have to tear-down the network (or comment our the body of the `ensureNotInitialized` smart contract method).
+To modify the smart contract you must increment the version number in `package.json` and re-run the `./install.sh` script. Because you can only initialize the contract once you will have to tear-down the network (or comment out the body of the `ensureNotInitialized` smart contract method).
 
 To restart the Test-Net run `./network.sh down && ./network.sh up && ./network.sh createChannel` from within the Test-Net directory.
