@@ -1,1 +1,0 @@
-["CLAUSE_001", "{\"$class\":\"org.accordproject.helloworldstate.MyRequest\",\"input\":\"Hello\"}"]

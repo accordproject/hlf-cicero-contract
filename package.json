@@ -1,6 +1,6 @@
 {
     "name": "cicero-contract",
-    "version": "0.61.3",
+    "version": "0.61.5",
     "description": "Accord Project Cicero contracts on Hyperledger Fabric",
     "main": "index.js",
     "engines": {
