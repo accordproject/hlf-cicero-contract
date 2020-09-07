@@ -7,7 +7,7 @@ The smart contract is initialized using an Accord Project *CiceroMark* document.
 # Install
 
 ## Fabric Install
-Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html) for how to install the HLF v2 Test-Net
+Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html) for how to install the HLF v2 Test-Net and how to start it.
 
 ## Set HLF_INSTALL_DIR
 
