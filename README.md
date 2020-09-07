@@ -127,4 +127,4 @@ You can experiment with different contracts by simply adding a smart legal contr
 
 To modify the smart contract you must increment the version number in `package.json` and re-run the `./install.sh` script. Because you can only initialize the contract once you will have to tear-down the network (or comment out the body of the `ensureNotInitialized` smart contract method).
 
-To restart the Test-Net run `./network.sh down && ./network.sh up && ./network.sh createChannel` from within the Test-Net directory.
+To restart the Test-Net run `./network.sh down && ./network.sh up -ca && ./network.sh createChannel` from within the Test-Net directory.
