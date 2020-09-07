@@ -1,6 +1,6 @@
 {
     "name": "cicero-contract",
-    "version": "0.58.0",
+    "version": "0.61.5",
     "description": "Accord Project Cicero contracts on Hyperledger Fabric",
     "main": "index.js",
     "engines": {
@@ -17,9 +17,9 @@
     "author": "Accord Project",
     "license": "Apache-2.0",
     "dependencies": {
-        "@accordproject/cicero-core": "^0.20.10",
-        "@accordproject/cicero-engine": "^0.20.10",
-        "@accordproject/markdown-cicero": "^0.10.0",
+        "@accordproject/cicero-core": "^0.21.6",
+        "@accordproject/cicero-engine": "^0.21.6",
+        "@accordproject/markdown-cicero": "^0.12.8",
         "bent": "^7.1.0",
         "fabric-contract-api": "^2.0.0",
         "fabric-shim": "^2.0.0"

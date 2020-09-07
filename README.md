@@ -1,14 +1,45 @@
 # hlf-cicero-contract
 
-This project is a generic Smart Contract for **Hyperledger Fabric v2 (HLF v2)** (aka chaincode) that can be used to install, instantiate and trigger clauses within a smart legal agreement, defined using the [Accord Project](https://accordproject.org) technology. The logic for the clause runs on-chain, and responses from the logic are returned to the caller. Any emitted events are passed to the Fabric event bus, and the state for the clause is stored on-chain.
+This project is a generic Smart Contract for **Hyperledger Fabric v2.2 (HLF v2.2)** (aka chaincode) that can be used to install, instantiate and trigger clauses within a smart legal agreement, defined using the [Accord Project](https://accordproject.org) technology. The logic for the clause runs on-chain, and responses from the logic are returned to the caller. Any emitted events are passed to the Fabric event bus, and the state for the clause is stored on-chain.
 
 The smart contract is initialized using an Accord Project *CiceroMark* document. CiceroMark is an extended markdown format, allowing inline instantiation of [Accord Project templates](https://docs.accordproject.org/docs/accordproject.html).
 
 # Install
 
-> Please customize the environment variables in the scripts based on your HLF v2 install location and the location of the HLF Test-Net.
-
+## Fabric Install
 Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html) for how to install the HLF v2 Test-Net and how to start it.
+
+## Set HLF_INSTALL_DIR
+
+```
+export HLF_INSTALL_DIR=/Users/dselman/dev/fabric-samples
+```
+
+## jq Install
+Install [jq](https://stedolan.github.io/jq/) for your platform.
+
+## Set PATH
+
+Ensure your path is set correctly so that the `peer` command works. E.g.
+
+```
+export PATH=/Users/dselman/dev/fabric-samples/bin/:$PATH
+peer version
+```
+
+## Create the Channel
+
+Don't forget to create the channel (see the Fabric install guide and check you did not miss this step)!
+
+```
+./network.sh createChannel
+```
+
+## Start Network **with CA**
+
+Start the network by running the `./network.sh up -ca` inside the `fabric-samples/test-network` directory.
+
+## Install Cicero Chaincode
 
 Install the package onto Hyperledger Fabric v2 Test-Net peers using the `./install.sh` script.
 
@@ -60,25 +91,16 @@ checkcommitreadiness
 chaincode committed
 ```
 
-# Initialize
-
-> Please customize the environment variables in the scripts based on your HLF v2 install location and the location of the HLF Test-Net.
+# Deploy a Smart Legal Contract
 
 After installing the chaincode on the peers you **must** call the `initialize` method by running the `./initialize.sh` script.
-The script includes the transaction payload (markdown text for the contract) from `initialize-input.txt`.
+The script deploys `contract.md` to Fabric, which contains a simple `HelloWorld` clause.
 
-A source markdown contract is included as `contract.md`.
-
-> Note that you can only call `initialize` once on the smart contract - ensuring that once the markdown text of the contract
-has been set, it is immutable. During the initialize transaction the CiceroMark text is parsed to extract the template references and templates are downloaded from https://templates.accordproject.org. This logic will have to be customized to load templates from elsewhere.
+> During the initialize transaction the CiceroMark text is parsed to extract the template references and templates are downloaded from https://templates.accordproject.org. This logic will have to be customized to load templates from elsewhere.
 
 # Trigger
 
-> Please customize the environment variables in the scripts based on your HLF v2 install location and the location of the HLF Test-Net.
-
-Once instantiated clauses within the smart contract can be triggered. You must pass the `ID` and the `JSON` payload to the `trigger` method by running the `./trigger.sh` script.
-
-A sample input payload is included in `trigger.input.txt`.
+Once instantiated clauses within the smart contract can be triggered by running the `./trigger.sh` script to submit `request.json` to trigger CLAUSE_001.
 
 Here are the logs from 2 calls to trigger a stateful clause. Note the integer value `Hello Dan Selman Hello(1.0)` gets incremented each time the clause is triggered, with state stored on the HLF ledger.
 
@@ -89,8 +111,20 @@ Dan-MacBook-Pro-2:hlf-cicero-contract dselman$ ./trigger.sh
 2020-07-21 15:58:54.896 CEST [chaincodeCmd] chaincodeInvokeOrQuery -> INFO 001 Chaincode invoke successful. result: status:200 payload:"{\"$class\":\"org.accordproject.helloworldstate.MyResponse\",\"output\":\"Hello Dan Selman Hello(2.0)\",\"transactionId\":\"97b57cf5a0385b827c39a1e8d2adf04b1906b4b1f9b6c307783b37a3510def5a\",\"timestamp\":{\"seconds\":{\"low\":1595339934,\"high\":0,\"unsigned\":false},\"nanos\":870996000}}" 
 ```
 
+# Deploying Another Contract
+
+To deploy a different contract and trigger it (rental-deposit) use the following commands:
+
+```
+cd client
+node submitTransaction.js initialize rental-contract.md
+node submitTransaction.js trigger rental-request.json RENTAL_001
+```
+
+You can experiment with different contracts by simply adding a smart legal contract markdown file and the request JSON file to use and then re-running `node submitTransaction.js initialize` and `node submitTransaction.js trigger` with the appropriate arguments.
+
 # Rebuild and Redeploy
 
-To modify the smart contract you must increment the version number in `package.json` and re-run the `./install.sh` script. Because you can only initialize the contract once you will have to tear-down the network (or comment our the body of the `ensureNotInitialized` smart contract method).
+To modify the smart contract you must increment the version number in `package.json` and re-run the `./install.sh` script. Because you can only initialize the contract once you will have to tear-down the network (or comment out the body of the `ensureNotInitialized` smart contract method).
 
-To restart the Test-Net run `./network.sh down && ./network.sh up && ./network.sh createChannel` from within the Test-Net directory.
+To restart the Test-Net run `./network.sh down && ./network.sh up -ca && ./network.sh createChannel` from within the Test-Net directory.
