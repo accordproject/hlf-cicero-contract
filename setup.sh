@@ -60,7 +60,7 @@ fabric_setup() {
     else
         echo "Installing fabric-samples ..."
         cd ..
-        curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.2.2 1.4.9
+        curl -sSL https://bit.ly/2ysbOFE | bash -s
         export HLF_INSTALL_DIR=$(readlink -f fabric-samples/)
         export PATH=$(readlink -f fabric-samples)/bin/:$PATH
         if [ -x "$(command -v peer)" ]; then
