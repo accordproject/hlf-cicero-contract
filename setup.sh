@@ -65,6 +65,7 @@ fabric_setup() {
         export PATH=$(readlink -f fabric-samples)/bin/:$PATH
         if [ -x "$(command -v peer)" ]; then
             echo "${green}PATH to peer binary is set"
+            cd hlf-cicero-contract
         else
             echo "${red}failed to set PATH for peer binary"
             exit
