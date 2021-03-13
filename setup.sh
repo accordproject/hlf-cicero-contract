@@ -107,5 +107,6 @@ prerequisites
 fabric_setup
 start_network
 install
+sleep 10s
 initialize
 trigger
