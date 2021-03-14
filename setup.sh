@@ -9,7 +9,7 @@ prerequisites() {
     if [ -x "$(command -v docker)" ]; then
         echo "${green}docker is installed"
     else
-        echo "${red}docker is missing. Please install docker"
+        echo "${red}docker is missing. Please install docker. "
         exit
     fi
 
@@ -80,33 +80,35 @@ start_network() {
     rm client/wallet/appUser.id
     cd ../fabric-samples/test-network
     ./network.sh down && ./network.sh up -ca
+    if [ $? -eq 0 ]; then
+        echo "${green}Fabric test-network started."
+    else
+        echo "${red}Fabric test-network failed to started."
+        exit
+    fi
     ./network.sh createChannel
-    echo "${green}Fabric test-network started."
+    if [ $? -eq 0 ]; then
+        echo "${green}mychannel joined by both orgs"
+    else
+        echo "${red}orgs failed to join mychannel"
+        exit
+    fi
 }
 
 install() {
     echo "${reset}Install cicero-contract chaincode on the network"
     cd ../../hlf-cicero-contract
     ./install.sh
+    if [ $? -eq 0 ]; then
+        echo "${green}Chaincode installed successfully"
+    else
+        echo "${red}Failed to install chaincode."
+        exit
+    fi
     echo "${green}Chaincode Installed"
-}
-
-initialize() {
-    echo "${reset}Initialize cicero-contract chaincode on the network"
-    ./initialize.sh
-    echo "${green}Chaincode Initialized"
-}
-
-trigger() {
-    echo "${reset}Trigger chaincode installed on the network"
-    ./trigger.sh
-    echo "${green}Chaincode Triggered"
 }
 
 prerequisites
 fabric_setup
 start_network
 install
-sleep 10s
-initialize
-trigger
