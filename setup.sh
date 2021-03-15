@@ -10,6 +10,7 @@ prerequisites() {
         echo "${green}docker is installed"
     else
         echo "${red}docker is missing. Please install docker. "
+        echo "${reset}visit https://docs.docker.com/get-docker/"
         exit
     fi
 
@@ -17,6 +18,7 @@ prerequisites() {
         echo "${green}node is installed"
     else
         echo "${red}node is missing. Please install node"
+        echo "${reset}visit https://nodejs.org/en/download/"
         exit
     fi
 
@@ -24,6 +26,7 @@ prerequisites() {
         echo "${green}Docker-Compose is installed"
     else
         echo "${red}docker-compose is missing. Please install docker-compose"
+        echo "${reset}visit https://docs.docker.com/compose/install/"
         exit
     fi
 
@@ -31,6 +34,7 @@ prerequisites() {
         echo "${green}jq is installed"
     else
         echo "${red}jq is missing. Please install jq"
+        echo "${reset}visit https://stedolan.github.io/jq/download/"
         exit
     fi
 
@@ -38,6 +42,7 @@ prerequisites() {
         echo "${green}curl is installed"
     else
         echo "${red}curl is missing. Please install curl"
+        echo "${reset}visit https://curl.se/download.html"
         exit
     fi
 
@@ -45,6 +50,7 @@ prerequisites() {
         echo "${green}git is installed"
     else
         echo "${red}git is missing. Please install git"
+        echo "${reset}https://git-scm.com/book/en/v2/Getting-Started-Installing-Git"
         exit
     fi
 }
