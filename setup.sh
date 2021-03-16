@@ -64,19 +64,28 @@ fabric_setup() {
         export PATH=$(readlink -f ../fabric-samples)/bin/:$PATH
         echo "${green}environment variables set successfully." 
     else
-        echo "Installing fabric-samples ..."
-        cd ..
-        curl -sSL https://bit.ly/2ysbOFE | bash -s
-        export HLF_INSTALL_DIR=$(readlink -f fabric-samples/)
-        export PATH=$(readlink -f fabric-samples)/bin/:$PATH
-        if [ -x "$(command -v peer)" ]; then
-            echo "${green}PATH to peer binary is set"
-            cd hlf-cicero-contract
+        echo -n "${reset}Do you want to download the fabric-samples repo? yes/no "
+        read answer
+        if [ "$answer" == "yes" ] ;then
+            echo "Installing fabric-samples ..."
+            cd ..
+            curl -sSL https://bit.ly/2ysbOFE | bash -s
+            export HLF_INSTALL_DIR=$(readlink -f fabric-samples/)
+            export PATH=$(readlink -f fabric-samples)/bin/:$PATH
+            if [ -x "$(command -v peer)" ]; then
+                echo "${green}PATH to peer binary is set"
+                cd hlf-cicero-contract
+            else
+                echo "${red}failed to set PATH for peer binary"
+                exit
+            fi
+            echo "${reset}fabric-samples repo downloaded"
+        elif [ "$answer" == "no" ] ;then
+            echo "${red} Do not forget to setup environment variables."
         else
-            echo "${red}failed to set PATH for peer binary"
-            exit
+            echo "${red}Type yes or no"
+            fabric_setup
         fi
-        echo "${reset}fabric-samples repo downloaded"
     fi
 }
 
