@@ -1,6 +1,6 @@
 {
     "name": "cicero-contract-client",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Client for Accord Project Cicero",
     "main": "index.js",
     "engines": {
@@ -12,7 +12,7 @@
     "author": "Accord Project",
     "license": "Apache-2.0",
     "dependencies": {
-        "fabric-ca-client": "^2.2.2",
-        "fabric-network": "^2.2.2"
+        "fabric-ca-client": "^2.2.5",
+        "fabric-network": "^2.2.5"
     }
 }

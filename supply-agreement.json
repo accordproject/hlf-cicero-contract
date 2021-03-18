@@ -1,0 +1,7 @@
+{
+    "$class": "org.cloudsecurityalliance.supplyagreement.SensorReading",
+    "temperature": 7.911,
+    "humidity": 164.477,
+    "transactionId": "a106b9f0-55bb-11eb-a567-19833b252d62",
+    "timestamp": "2021-01-13T16:23:11.375+00:00"
+}
