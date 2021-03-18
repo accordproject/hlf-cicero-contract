@@ -15,7 +15,7 @@ The smart contract is initialized using an Accord Project *CiceroMark* document.
 
 # Install
 
-There are two methods by which you can setup the project. A quick `install setup method` and a `install setup` method. First install all of the above prerequisites and then try the `quick install setup`, if it fails try the `install setup` method.
+There are two methods by which you can setup the project. A `quick install setup` method and a `install setup` method. First install all of the above prerequisites and then try the `quick install setup`, if it fails try the `install setup` method.
 
 ## Quick Install Setup [Method-1]
 
