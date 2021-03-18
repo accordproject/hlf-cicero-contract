@@ -15,6 +15,8 @@ The smart contract is initialized using an Accord Project *CiceroMark* document.
 
 # Install
 
+There are two methods by which you can setup the project. A quick `install setup method` and a `install setup` method. First install all of the above prerequisites and then try the `quick install setup`, if it fails try the `install setup` method.
+
 ## Quick Install Setup [Method-1]
 
 Tested for Ubuntu 18.04 and above. Thus can work for any debian based distribution.
@@ -92,7 +94,7 @@ Installed chaincodes on peer:
 Package ID: cicero_0.61.5:fc37752977426eb466560db8d695a13bed0b2e155b0dbc7aa1e471607dc12abc, Label: cicero_0.61.5
 Chaincode package id:  cicero_0.61.5:fc37752977426eb466560db8d695a13bed0b2e155b0dbc7aa1e471607dc12abc
 Sequence number 1
-2020-09-09 20:39:26.515 BST [chaincodeCmd] ClientWait -> INFO 001 txid [81fc8745d8bdb2b1eda4ac69a80a36f7966166613bd5b83255dab8649250c27c] committed with status (VALID) at 
+2020-09-09 20:39:26.515 BST [chaincodeCmd] ClientWait -> INFO 001 txid [81fc8745d8bdb2b1eda4ac69a80a36f7966166613bd5b83255dab8649250c27c] committed with status (VALID) at install setup method
 Approved for org2
 2020-09-09 20:39:28.634 BST [chaincodeCmd] ClientWait -> INFO 001 txid [7390de92fa87f06231373c928edc561bb773b8532c4a3ab77c117ae35b49ba2f] committed with status (VALID) at 
 Approved for org1
