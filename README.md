@@ -4,21 +4,49 @@ This project is a generic Smart Contract for **Hyperledger Fabric v2.2 (HLF v2.2
 
 The smart contract is initialized using an Accord Project *CiceroMark* document. CiceroMark is an extended markdown format, allowing inline instantiation of [Accord Project templates](https://docs.accordproject.org/docs/accordproject.html).
 
+# Prerequisites
+
+1. docker - https://docs.docker.com/get-docker/
+2. node & npm - https://nodejs.org/en/download/
+3. docker-compose - https://docs.docker.com/compose/install/
+4. jq - https://stedolan.github.io/jq/download/
+5. curl - https://curl.se/download.html
+6. git - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
 # Install
 
-## Fabric Install
+There are two methods by which you can setup the project. A `quick install setup` method and a `install setup` method. First install all of the above prerequisites and then try the `quick install setup`, if it fails try the `install setup` method.
+
+## Quick Install Setup [Method-1]
+
+Works for Linux based systems. 
+
+```
+mkdir hlf-cicero-setup
+cd hlf-cicero-setup
+git clone https://github.com/accordproject/hlf-cicero-contract.git
+cd hlf-cicero-contract
+./setup.sh
+source ./path.sh
+./initialize.sh
+./trigger.sh
+```
+
+## Install Setup [Method-2]
+
+### Fabric Install
 Refer to the [HLF documentation](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html) for how to install the HLF v2 Test-Net and how to start it.
 
-## Set HLF_INSTALL_DIR
+### Set HLF_INSTALL_DIR
 
 ```
 export HLF_INSTALL_DIR=/Users/dselman/dev/fabric-samples
 ```
 
-## jq Install
+### jq Install
 Install [jq](https://stedolan.github.io/jq/) for your platform.
 
-## Set PATH
+### Set PATH
 
 Ensure your path is set correctly so that the `peer` command works. E.g.
 
@@ -27,11 +55,11 @@ export PATH=/Users/dselman/dev/fabric-samples/bin/:$PATH
 peer version
 ```
 
-## Start Network **with CA**
+### Start Network **with CA**
 
 Start the network by running the `./network.sh down && ./network.sh up -ca` inside the `fabric-samples/test-network` directory.
 
-## Create the Channel
+### Create the Channel
 
 Don't forget to create the channel (see the Fabric install guide and check you did not miss this step)!
 
@@ -39,7 +67,7 @@ Don't forget to create the channel (see the Fabric install guide and check you d
 ./network.sh createChannel
 ```
 
-## Install Cicero Chaincode
+### Install Cicero Chaincode
 
 Install the package onto Hyperledger Fabric v2 Test-Net peers using the `./install.sh` script.
 
@@ -66,7 +94,7 @@ Installed chaincodes on peer:
 Package ID: cicero_0.61.5:fc37752977426eb466560db8d695a13bed0b2e155b0dbc7aa1e471607dc12abc, Label: cicero_0.61.5
 Chaincode package id:  cicero_0.61.5:fc37752977426eb466560db8d695a13bed0b2e155b0dbc7aa1e471607dc12abc
 Sequence number 1
-2020-09-09 20:39:26.515 BST [chaincodeCmd] ClientWait -> INFO 001 txid [81fc8745d8bdb2b1eda4ac69a80a36f7966166613bd5b83255dab8649250c27c] committed with status (VALID) at 
+2020-09-09 20:39:26.515 BST [chaincodeCmd] ClientWait -> INFO 001 txid [81fc8745d8bdb2b1eda4ac69a80a36f7966166613bd5b83255dab8649250c27c] committed with status (VALID) at install setup method
 Approved for org2
 2020-09-09 20:39:28.634 BST [chaincodeCmd] ClientWait -> INFO 001 txid [7390de92fa87f06231373c928edc561bb773b8532c4a3ab77c117ae35b49ba2f] committed with status (VALID) at 
 Approved for org1
@@ -82,14 +110,14 @@ checkcommitreadiness
 chaincode committed
 ```
 
-# Deploy a Smart Legal Contract
+## Deploy a Smart Legal Contract
 
 After installing the chaincode on the peers you **must** call the `initialize` method by running the `./initialize.sh` script.
 The script deploys `contract.md` to Fabric, which contains a simple `HelloWorld` clause.
 
 > During the initialize transaction the CiceroMark text is parsed to extract the template references and templates are downloaded from https://templates.accordproject.org. This logic will have to be customized to load templates from elsewhere.
 
-# Trigger
+## Trigger
 
 Once instantiated clauses within the smart contract can be triggered by running the `./trigger.sh` script to submit `request.json` to trigger CLAUSE_001.
 
