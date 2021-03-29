@@ -19,7 +19,7 @@ There are two methods by which you can setup the project. A `quick install setup
 
 ## Quick Install Setup [Method-1]
 
-Tested for Ubuntu 18.04 and above. Thus can work for any debian based distribution.
+Works for Linux based systems. 
 
 ```
 mkdir hlf-cicero-setup
