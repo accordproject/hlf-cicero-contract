@@ -17,8 +17,8 @@
     "author": "Accord Project",
     "license": "Apache-2.0",
     "dependencies": {
-        "@accordproject/cicero-core": "^0.21.26",
-        "@accordproject/cicero-engine": "^0.21.26",
+        "@accordproject/cicero-core": "^0.24.0",
+        "@accordproject/cicero-engine": "^0.24.0",
         "@accordproject/markdown-cicero": "^0.12.12",
         "bent": "^7.1.0",
         "fabric-contract-api": "^2.2.1",
